@@ -1,5 +1,6 @@
 #include<iostream> 
 #include <string>
+#include <vector>
 
 
 //#include<string> 
@@ -19,10 +20,10 @@ int main()
 {
 
 	//functions 
-	doSomething(); 
+	//doSomething(); 
 
-	string stringVariable = doSomething(); 
-	cout << "The value of stringVariable is : " << stringVariable << "\n";
+	//string stringVariable = doSomething(); 
+	//cout << "The value of stringVariable is : " << stringVariable << "\n";
 
 	//string name = "Seth";
 
@@ -62,20 +63,34 @@ int main()
 	//	cout << "Else body got executed\n";
 	//}
 
-
-	//doSomething(); //function "call" 
-
-
-
 	//arrays
-	int nums[5] = { 111, 222, 333, 4444, 5555 };
+	//int nums[5] = { 111, 222, 333, 4444, 5555 }; //C-style 
 
-	for (int i = 0; i <= 5; i++)
+	//for (int i = 0; i <= 5; i++)
+	//{
+	//	cout << nums[i] << "\n";
+	//}
+	//be wary: vectors require more RAM/hard drive space than C-style arrays 
+	//2011 
+	vector<int> credit_card_number=
 	{
-		cout << nums[i] << "\n";
+		4, 	5, 	5, 	6, 	7, 	3, 	7, 	5, 	8, 	6, 	8, 	9, 	9, 	8, 	5, 	5
+	};
+
+	//step 1: 
+	//credit_card_number.
+	credit_card_number.pop_back(); 
+
+	cout << "Did it (removing the \"last\" element) work?\n";
+
+	for (auto& number : credit_card_number) //range-based for loop
+	{
+		cout << number << " ";
 	}
 
-	vector<int> //dynamic array (
+		
+		
+		//dynamic array (
 
 
 
