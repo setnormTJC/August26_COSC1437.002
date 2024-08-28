@@ -5,7 +5,7 @@
 
 int main()
 {
-    //system("chcp 65001");
+    system("chcp 65001");
 
     std::locale::global(std::locale("en_US.UTF-8"));
     std::wcout.imbue(std::locale());
