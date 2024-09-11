@@ -1,104 +1,104 @@
-#include<iostream>
-#include<vector> //a vector is an array whose size can change (grow/shrink) 
-#include<algorithm>
-#include <list>
+//Hayden Beck
+//A00567244
 
-#include<array> //this is a STATIC C++ implementation of an array
-
+#include <iostream>
+#include <vector>
 using namespace std;
 
-void printCCN(const vector<int>& CCN) //pass by constant reference 
+void printCCN(const vector<int>& CCN)
 {
-	//CCN[0] = 1; 
-
 	for (auto& digit : CCN)
 	{
-		//digit = 3234; 
-		cout << digit << " ";
+		cout << digit << " "; 
 	}
 	cout << "\n";
 }
 
-int doSteps4Through6(vector<int>&  CCN)
+//To check validation of the credit card number
+bool LuhnAlgorithm(vector<int>& CCN)
 {
+	int rightDigit{}; //brace initialization 
+	//cout << "right digit: " << rightDigit << "\n";
+	int sum{};
+
+	//cout << "BEFORE setting back = rightDigit: " << CCN.back() << "\n";
+
+	//Store rightmost digit for use later
+	rightDigit = CCN.back(); 
+	//cout << "AFTER setting back = rightDigit: " << CCN.back() << "\n";
+
+	//Get rid of rightmost digit
+	CCN.pop_back();
+
+	//Reverse Digits?
+	reverse(CCN.begin(), CCN.end());
+	
+
+
+	//Multiply digits in odd positions by 2?
 	for (int i = 0; i < CCN.size(); i++)
 	{
-		if (i % 2 == 0)
+		//int currentValue = CCN[i]; //x = x - 5; 0 != 0 - 5 
+
+		if (i % 2 == 0) //be wary of 0-based counting 
 		{
 			CCN[i] = CCN[i] * 2;
 		}
 
-		if (CCN[i] > 9)
+		//subtract 9 from any digit greater than 9
+		if (CCN[i] > 9) 
 		{
 			CCN[i] = CCN[i] - 9;
 		}
 
+
 	}
 
-	int sum = 0; 
+
+	//Add up all values
 	for (int i = 0; i < CCN.size(); i++)
 	{
-		sum = sum + CCN[i]; 
+		sum += CCN[i];
 	}
 
-	cout << "Sum is: " << sum << "\n";
-	return sum; 
-}
+	//cout << "Sum: " << sum << "\n";
 
-int main()
-{
-
-
-	//int staticArrayOfNums[5] = { 1, 2, 3, 4, 5 }; //C-Style ("unsafe") static array 
-	//staticArrayOfNums[0] = 123; 
-
-	////static means (in this instance) "unchanging" -> the number of items in the list
-	//														//cannot change
-	////staticArrayOfNums[5] = 123456; 
-
-	//array<int, 3> staticCPPArray = { 11, 22, 33 }; 
-	//cout << staticCPPArray[4] << "\n"; //
-
-	//vector<int> nums; 
-	////cout << staticArrayOfNums[4759] << "\n";
-
-	//step 1: 
-	vector<int> CCN =
+	//check if sum%10 is equal to rightmost digit
+	//cout << "Right digit! " << rightDigit << "\n";
+	if (sum % 10 == rightDigit)
 	{
-		4,9,1,6,4,4,2,0,7,9,0,0,3,5,6,1
-	};
-
-	int lastDigit = CCN.back(); 
-	cout << "Back: " << lastDigit << "\n";
-
- 	//step 2 (drop the rightmost digit) 
-	CCN.pop_back(); 
-	printCCN(CCN); 
-
-	//step 3: (reverse) 
-	std::reverse(CCN.begin(), CCN.end());
-
-	cout << "After REVERSING the CCN: \n";
-	printCCN(CCN); 
-	//int CstyleArray[16] = {1, 2, 3, 4, ...}
-
-
-	int sum = doSteps4Through6(CCN); 
-	cout << "After step 4 and step 5: \n";
-	printCCN(CCN);
-
-	cout << "Sum mod 10 = " << sum % 10 << "\n";
-
-	//final step 
-	if (sum % 10 == lastDigit)
-	{
-		cout << "Valid\n";
+		return true;
 	}
 	else
 	{
-		cout << "INVALID :[\n";
+		return false;
+	}
+
+
+}
+
+
+
+
+
+int main()
+{
+	//CCN stands for credit card number
+	vector<int> CCN = { 4, 5, 5, 6, 7, 3, 7, 5, 8, 6, 8, 9, 9, 8, 5, 5 };
+
+
+	if (LuhnAlgorithm(CCN) == true)
+	{
+		cout << "Valid Credit Card Number!" << endl;
+	}
+	else
+	{
+		cout << "Invalid Credit Card Number!" << endl;
 	}
 
 
 	return 0;
+
+
+
 }

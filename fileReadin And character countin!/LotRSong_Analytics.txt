@@ -2,3 +2,16 @@ helloasdfasdfasdfa output file?
 helloasdfasdfasdfa output file?
 helloasdfasdfasdfa output file?
 Total number of lines: 18
+Total number of lines: 18
+Total number of lines: 18
+Total number of lines: 18
+Total number of characters: 865
+Total number of lines: 18
+Total number of characters: 865
+Total number of lines: 18
+Total number of characters: 865
+Total number of lines: 18
+Total number of characters: 865
+Total number of lines: 18
+Total number of characters: 865
+Total number of WORDS: 150
