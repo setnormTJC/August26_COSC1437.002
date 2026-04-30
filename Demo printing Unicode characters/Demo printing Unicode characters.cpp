@@ -12,5 +12,6 @@ int main()
 
     std::wcout << L"こんにちは世界\n"; //ko-nee-chee-wa, se-kai
     std::wcout << L"नमस्ते, संसार\n"; //namaste, sansara 
+    std::wcout << L"你好世界\n"; //hello world (niHOW, shijee)
     std::cout << "Hello World!\n";
 }
